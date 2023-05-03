@@ -1,15 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-
-  <title>My p5.js Sketch</title>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
-  <script src="eye-ugly-GH.js"></script>
-  <!--<script src="eye.js"></script>-->
-  <!--<script src="buffers_(clearing only one function).js"></script>-->
-  <!--<script src="BG_a.js"></script>-->
+	<title>Resizable iframe</title>
+	<style>
+		iframe {
+			display: block;
+			margin: 0 auto;
+			border: 1px solid black;
+		}
+		select {
+			margin-top: 10px;
+		}
+	</style>
 </head>
-<body>
+<body style="background: rgb(0,0,0); color: #ffffff;">
+	<div>
+		<center><h1>℈ℽ⍷-ᚤက</h1>
+		<p>Fixed hash, different sizes.</p></center>
+
+	</div>
+	<div><center>
+        <select id="sizeSelect">
+			<option value="600">600x600</option>
+            <option value="800x400">800x400</option>
+			<option value="390x600">390x600</option>
+            <option value="1200x350">1200x350</option>
+			<option value="2400">BIG</option>
+		</select></center><br>
+		<iframe id="myiframe" src="eye1.html" width="600" height="600"></iframe>
+	</div>
+	<br>
+    <hr>
+	<div>
+		<center><p>Random hash for different variations.</p></center>
+	</div>
+    <div><center>
+        <select id="refresher">
+			<option value="600">refresh⬎</option>
+            <option value="600">⬑refresh</option>
+		</select></center><br>
+		<iframe id="myiframe2" src="eye2.html" width="600" height="600"></iframe>
+	</div>
+	<script>
+		const iframe = document.getElementById('myiframe');
+		const sizeSelect = document.getElementById('sizeSelect');
+        const iframe2 = document.getElementById('myiframe2');
+		const refresher = document.getElementById('refresher');
+
+		sizeSelect.addEventListener('change', function() {
+			const selectedSize = sizeSelect.value;
+			iframe.width = selectedSize.split('x')[0];
+			iframe.height = selectedSize.split('x')[1] || selectedSize.split('x')[0];
+            document.getElementById('myiframe').src = document.getElementById('myiframe').src
+		});
+        refresher.addEventListener('change', function() {
+            document.getElementById('myiframe2').src = document.getElementById('myiframe2').src
+		});
+	</script>
 </body>
 </html>
